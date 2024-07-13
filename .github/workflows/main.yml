@@ -18,5 +18,4 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_KEY }}
           script: |
-            echo "Making changes to files..." >> result.txt
-            ls
+            ls -l >> result.txt
