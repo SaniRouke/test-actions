@@ -18,5 +18,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASS }}
           script: |
-            git clone ${{ github.repository_url }} .
+            git clone ${{ github.url }}
+            cd ${{ github.repository_name }}
             git pull origin main
