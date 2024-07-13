@@ -18,4 +18,4 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_KEY }}
           script: |
-            ls -l >> result.txt
+            scp /home/student/test/test.go ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/student/test/
