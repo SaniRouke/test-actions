@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: SSH connect and change files
         uses: appleboy/ssh-action@master
@@ -18,8 +18,4 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_KEY }}
           script: |
-            cd /path/to/your/project/on/server
-            # Replace these with your actual commands
-            echo "Making changes to files..."
-            touch new_file.txt 
-            echo "Changes made!"
+            echo "Making changes to files..." >> result.txt
