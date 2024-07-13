@@ -1,21 +1,22 @@
-name: SSH File Change Workflow
+name: Download Repository to Remote Server
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  change-files-on-server:
+  download-repository:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: SSH connect and change files
+      - name: SSH connect and download repository
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_KEY }}
+          password: ${{ secrets.SSH_PASS }}
           script: |
-            scp /home/student/test/test.go ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}:/home/student/test/
+            git clone ${{ github.repository_url }} .
+            git pull origin main
