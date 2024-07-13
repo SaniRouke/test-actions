@@ -17,11 +17,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASS }}
-
           script: |
-            git clone $1
-            cd $2
+            git clone https://github.com/SaniRouke/test-actions.git
+            cd test-actions
             git pull origin main
-          args: |
-            ${{ github.url }}
-            ${{ github.repository_name }}
